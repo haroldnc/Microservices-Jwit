@@ -21,15 +21,24 @@ function PersonalData ({ info }) {
 }
 
 function PreferencesColor ({ color }) {
-	const colors = {
-		rojo: 'azul',
-		azul: 'verde',
-		verde: 'violeta',
-		violeta: 'amarillo',
-		amarillo: 'rojo'
-	}
+	try {
+		const colors = {
+			rojo: 'azul',
+			azul: 'verde',
+			verde: 'violeta',
+			violeta: 'amarillo',
+			amarillo: 'rojo'
+		}
 
-	return colors[color];
+		return colors[color];
+	} catch(error) {
+		console.log({
+			step: 'controllers PreferencesColor',
+			error: error.toString()
+		});
+
+		return { statusCode:500, message: error.toString() };
+	}
 }
 
 module.exports = {
