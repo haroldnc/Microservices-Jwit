@@ -6,7 +6,7 @@ const result = Adaptador({
 		edad: 27,
 		address: 'Calle Libertad, Chocope, Perú',
 		nationality: 'peruano',
-		editor: 'neovim'
+		editor: 'vim'
 	},
 	color: 'rojo'
 });
