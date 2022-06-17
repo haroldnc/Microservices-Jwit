@@ -5,7 +5,7 @@ const main = () => {
 		const result = Adaptador({
 			info: {
 				name: 'Jack',
-				edad: 18,
+				edad: 19,
 				address: 'Calle Libertad, Chocope, Perú',
 				nationality: 'peruano',
 				editor: 'vim'

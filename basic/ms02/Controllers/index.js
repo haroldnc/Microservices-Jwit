@@ -9,7 +9,7 @@ function PersonalData ({ info }) {
 
 		console.log(`The ${info.editor} editor developed by ${editors[info.editor]}`)
 
-		return info;
+		return { statusCode: 200, data: info};
 	} catch(error) {
 		console.log({
 			step: 'controllers PersonalData',
@@ -30,7 +30,7 @@ function PreferencesColor ({ color }) {
 			amarillo: 'rojo'
 		}
 
-		return colors[color];
+		return { statusCode: 200, data: colors[color]};
 	} catch(error) {
 		console.log({
 			step: 'controllers PreferencesColor',
