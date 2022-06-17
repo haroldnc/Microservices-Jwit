@@ -5,7 +5,7 @@ const main = () => {
 		const result = Adaptador({
 			info: {
 				name: 'Jack',
-				edad: 18,
+				edad: 27,
 				address: 'Calle Libertad, Chocope, Perú',
 				nationality: 'peruano',
 				editor: 'vim'
@@ -15,7 +15,7 @@ const main = () => {
 
 		if(result.statusCode !== 200) throw(result.message);
 
-		console.log(result);
+		console.log("Tu data es: ", result.data);
 	} catch(error) {
 		console.error(error);
 	}
