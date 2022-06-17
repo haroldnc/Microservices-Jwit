@@ -1,8 +1,14 @@
 const { Adaptador } = require('./Adapters');
 
 const result = Adaptador({
-	color: ['verde', 'azul'],
-	info: { name: 'Jack', edad: 27 }
+	info: {
+		name: 'Jack',
+		edad: 27,
+		address: 'Calle Libertad, Chocope, Perú',
+		nationality: 'peruano',
+		editor: 'vim'
+	},
+	color: 'rojo'
 });
 
 console.log(result);
