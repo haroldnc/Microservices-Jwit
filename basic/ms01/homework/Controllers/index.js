@@ -6,13 +6,21 @@ function PersonalData ({ info }) {
 		'notepad++': 'Don Ho'
 	}
 
-	console.log(`The editor developed by ${editors[info.editor]}`)
+	console.log(`The ${info.editor} editor developed by ${editors[info.editor]}`)
 
 	return info;
 }
 
 function PreferencesColor ({ color }) {
-	return color;
+	const colors = {
+		rojo: 'azul',
+		azul: 'verde',
+		verde: 'violeta',
+		violeta: 'amarillo',
+		amarillo: 'rojo'
+	}
+
+	return colors[color];
 }
 
 module.exports = {
