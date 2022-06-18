@@ -1,8 +1,8 @@
 const { Servicio } = require('../Services');
 
-function Adaptador({ info, color }) {
+async function Adaptador({ id }) {
 	try {
-		const { statusCode, data, message} = Servicio({ info, color });
+		const { statusCode, data, message} = await Servicio({ id });
 
 		return { statusCode, data, message};
 	} catch(error) {

@@ -1,17 +1,8 @@
-const { Adaptador } = require('./Adapters');
+const { Adaptador } = require('./src/Adapters');
 
-const main = () => {
+const main = async () => {
 	try {
-		const result = Adaptador({
-			info: {
-				name: 'Jack',
-				edad: 27,
-				address: 'Calle Libertad, Chocope, Perú',
-				nationality: 'peruano',
-				editor: 'vim'
-			},
-			color: 'rojo'
-		});
+		const result = await Adaptador({ id: 1 });
 
 		if(result.statusCode !== 200) throw(result.message);
 
