@@ -68,16 +68,18 @@ async function Update({ name, age, address, nationality, color, id }) {
 	}
 }
 
-async function FindOne() {
+async function FindOne({ where = {}}) {
 	try {
+		const instance = await Model.findOne({ where });
 
+		return { statusCode: 200, data: instance.toJSON() };
 	} catch(error) {
 		console.log({
 			step: 'controller Create',
 			error: error.toString()
 		});
 
-		return { statusCode: 200, message: error.toString() };
+		return { statusCode: 400, message: error.toString() };
 	}
 }
 
