@@ -12,8 +12,8 @@ const InternalError = 'No podemos procesar tu solicitud en estos momentos';
 
 const sequelize = new Sequelize({
    host: process.env.POSTGRES_HOST,
-   database: process.env.POSTGRES_DB,
    port: process.env.REDIS_PORT,
+   database: process.env.POSTGRES_DB,
    username: process.env.POSTGRES_USER,
    password: process.env.POSTGRES_PASSWORD,
    dialect: 'postgres'
