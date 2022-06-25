@@ -46,8 +46,33 @@ async function Update({ name, age, address, nationality, color, id }) {
 	}
 }
 
+async function FindOne({ name, age, address, nationality, color, id }) {
+	try {
+		const { statusCode, data, message } = await Controllers.FindOne({
+			where: {
+				name,
+				age,
+				address,
+				nationality,
+				color,
+				id
+			}
+		});
+
+		return { statusCode, data, message };
+	} catch(error) {
+		console.log({
+			step: 'services FindOne',
+			error: error.toString()
+		});
+
+		return { statusCode:500, message: error.toString() };
+	}
+}
+
 module.exports = {
 	Create,
 	Delete,
-	Update
+	Update,
+	FindOne
 };
