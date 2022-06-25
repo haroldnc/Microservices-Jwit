@@ -20,4 +20,15 @@ async function Create() {
    }
 }
 
+async function Delete() {
+   try {
+      const job = await queueDelete.add({});
+      const result = await job.finished();
+
+      console.log(result);
+   } catch (error) {
+      console.log(error);
+   }
+}
+
 main();
