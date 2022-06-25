@@ -1,34 +1,30 @@
-const db = [
-	{
-		id: 1,
-		info: {
-			name: 'Jack',
-			edad: 27,
-			address: 'Calle Libertad, Chocope, Perú',
-			nationality: 'peruano'
-		},
-		color: 'rojo'
-	},
-	{
-		id: 2,
-		info: {
-			name: 'Marilyn',
-			edad: 25,
-			address: 'Calle Futuro, Casa Grande, Perú',
-			nationality: 'peruana'
-		},
-		color: 'violeta'
-	},
-	{
-		id: 3,
-		info: {
-			name: 'Elena',
-			edad: 51,
-			address: 'Calle Miraflores, Trujillo, Perú',
-			nationality: 'peruana'
-		},
-		color: 'azul'
-	}
-]
+const { sequelize } = require('../settings');
+const { DataTypes } = require('sequelize');
 
-module.exports = { db };
+const Model = sequelize.define('curso', {
+	name: {
+		type: DataTypes.STRING
+	},
+	edad: {
+		type: DataTypes.BIGINT
+	},
+	address: {
+		type: DataTypes.STRING
+	},
+	nationality: {
+		type: DataTypes.STRING
+	},
+	color: {
+		type: DataTypes.STRING
+	}
+});
+
+const SyncDB = async () => {
+	try {
+		Model.sync();
+	} catch(error) {
+		console.log(error);
+	}
+}
+
+module.exports = { SyncDB, Model };

@@ -19,4 +19,4 @@ const sequelize = new Sequelize({
    dialect: 'postgres'
 })
 
-module.exports = { redis, InternalError };
+module.exports = { redis, InternalError, sequelize };
