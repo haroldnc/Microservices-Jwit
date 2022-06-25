@@ -2,7 +2,7 @@ const { Model } = require('../Models');
 
 async function Create({ name, age, address, nationality, color }) {
 	try {
-		Model.create({
+		const instance = await Model.create({
 			name,
 			age,
 			address,
@@ -16,40 +16,55 @@ async function Create({ name, age, address, nationality, color }) {
 				'nationality',
 				'color'
 			]
-		})
+		});
+
+		return { statusCode: 200, data: instance.toJSON() }
+
 	} catch(error) {
 		console.log({
 			step: 'controller Create',
 			error: error.toString()
 		});
 
-		return { statusCode: 200, message: error.toString() };
+		return { statusCode: 400, message: error.toString() };
 	}
 }
 
-async function Delete() {
+async function Delete({ where = {} }) {
 	try {
+		await Model.destroy({ where });
 
+		return { statusCode: 200, data: "OK" }
 	} catch(error) {
 		console.log({
 			step: 'controller Create',
 			error: error.toString()
 		});
 
-		return { statusCode: 200, message: error.toString() };
+		return { statusCode: 400, message: error.toString() };
 	}
 }
 
-async function Update() {
+async function Update({ name, age, address, nationality, color, id }) {
 	try {
+		const instance = await Model.create({
+			name,
+			age,
+			address,
+			nationality,
+			color
+		}, {
+			where: { id }
+		});
 
+		return { statusCode: 200, data: instance[1][0].toJSON() }
 	} catch(error) {
 		console.log({
 			step: 'controller Create',
 			error: error.toString()
 		});
 
-		return { statusCode: 200, message: error.toString() };
+		return { statusCode: 400, message: error.toString() };
 	}
 }
 
