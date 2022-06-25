@@ -83,9 +83,11 @@ async function FindOne({ where = {}}) {
 	}
 }
 
-async function View() {
+async function View({ where = {} }) {
 	try {
+		const instances = await Model.findAll({ where });
 
+		return { statusCode: 200, data: instances };
 	} catch(error) {
 		console.log({
 			step: 'controller Create',
