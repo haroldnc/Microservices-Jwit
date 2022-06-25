@@ -2,9 +2,9 @@
   "name": "ms02",
   "version": "1.0.0",
   "description": "",
-  "main": "src/Adapters/processor.js",
+  "main": "dev.js",
   "scripts": {
-    "start": "node src/Adapters/processor.js",
+    "start": "node dev.js",
     "test": "node test/index.js"
   },
   "keywords": [],

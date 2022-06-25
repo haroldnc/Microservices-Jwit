@@ -22,8 +22,12 @@ const Model = sequelize.define('curso', {
 const SyncDB = async () => {
 	try {
 		Model.sync();
+
+		return { statusCode: 200, data: "OK" };
 	} catch(error) {
 		console.log(error);
+
+		return { statusCode: 500, message: error.toString() };
 	}
 }
 
