@@ -31,4 +31,15 @@ async function Delete() {
    }
 }
 
+async function FindOne() {
+   try {
+      const job = await queueFindOne.add({});
+      const result = await job.finished();
+
+      console.log(result);
+   } catch (error) {
+      console.log(error);
+   }
+}
+
 main();
