@@ -8,7 +8,7 @@ const {
 	queueView
 } = require('./index');
 
-queueCreate.process(async (job, done) => {
+async function Create(job, done) {
 	const { name, age, address, nationality, color } = job.data;
 
 	try {
@@ -30,9 +30,9 @@ queueCreate.process(async (job, done) => {
 
 		done(null, { statusCode:500, message: InternalError });
 	}
-});
+}
 
-queueDelete.process(async (job, done) => {
+async function Delete(job, done) {
 	const { id } = job.data;
 
 	try {
@@ -47,9 +47,9 @@ queueDelete.process(async (job, done) => {
 
 		done(null, { statusCode:500, message: InternalError });
 	}
-});
+}
 
-queueUpdate.process(async (job, done) => {
+async function Update(job, done) {
 	const { name, age, address, nationality, color, id } = job.data;
 
 	try {
@@ -71,9 +71,9 @@ queueUpdate.process(async (job, done) => {
 
 		done(null, { statusCode:500, message: InternalError });
 	}
-});
+}
 
-queueFindOne.process(async (job, done) => {
+async function FindOne(job, done) {
 	const { name, age, address, nationality, color, id } = job.data;
 
 	try {
@@ -95,9 +95,9 @@ queueFindOne.process(async (job, done) => {
 
 		done(null, { statusCode:500, message: InternalError });
 	}
-});
+}
 
-queueView.process(async (job, done) => {
+async function View(job, done) {
 	const { name, age, address, nationality, color, id } = job.data;
 
 	try {
@@ -119,4 +119,25 @@ queueView.process(async (job, done) => {
 
 		done(null, { statusCode:500, message: InternalError });
 	}
-});
+}
+
+async function run() {
+	try {
+		queueCreate.process(Create);
+		queueDelete.process(Delete);
+		queueUpdate.process(Update);
+		queueFindOne.process(FindOne);
+		queueView.process(View);
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+module.exports = {
+	Create,
+	Delete,
+	Update,
+	FindOne,
+	View,
+	run
+}
