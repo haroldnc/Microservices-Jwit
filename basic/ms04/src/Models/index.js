@@ -5,7 +5,7 @@ const Model = sequelize.define('curso', {
 	name: {
 		type: DataTypes.STRING
 	},
-	edad: {
+	age: {
 		type: DataTypes.BIGINT
 	},
 	address: {
