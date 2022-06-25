@@ -41,7 +41,7 @@ queueDelete.process(async (job, done) => {
 		done(null, { statusCode, data, message });
 	} catch(error) {
 		console.log({
-			step: 'adapters queueView',
+			step: 'adapters queueDelete',
 			error: error.toString()
 		});
 
@@ -65,7 +65,7 @@ queueUpdate.process(async (job, done) => {
 		done(null, { statusCode, data, message });
 	} catch(error) {
 		console.log({
-			step: 'adapters queueView',
+			step: 'adapters queueUpdate',
 			error: error.toString()
 		});
 
@@ -89,7 +89,7 @@ queueFindOne.process(async (job, done) => {
 		done(null, { statusCode, data, message });
 	} catch(error) {
 		console.log({
-			step: 'adapters queueView',
+			step: 'adapters queueFindOne',
 			error: error.toString()
 		});
 
