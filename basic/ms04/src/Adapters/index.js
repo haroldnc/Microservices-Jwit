@@ -1,10 +1,21 @@
 const bull = require('bull');
 
 const { redis } = require('../settings');
-const { Servicio } = require('../Services');
+
+const opts = {redis: {host: redis.host, port: redis.port }}
 
 console.log("Estoy listo para trabajar");
 
-const queueView = bull('curso', {redis: {host: redis.host, port: redis.port }});
+const queueCreate = bull('curso:create', opts);
+const queueDelete = bull('curso:delete', opts);
+const queueUpdate = bull('curso:update', opts);
+const queueFindOne = bull('curso:findOne', opts);
+const queueView = bull('curso:view', opts);
 
-module.exports = { queueView };
+module.exports = {
+   queueCreate,
+   queueDelete,
+   queueUpdate,
+   queueFindOne,
+   queueView
+};

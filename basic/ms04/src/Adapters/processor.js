@@ -1,17 +1,30 @@
-const { Servicio } = require('../Services');
+const Services = require('../Services');
 const { InternalError } = require('../settings');
-const { queueView } = require('./index');
+const {
+	queueCreate,
+	queueDelete,
+	queueUpdate,
+	queueFindOne,
+	queueView
+} = require('./index');
 
 queueView.process(async (job, done) => {
-	const { id } = job.data;
+	const { name, age, address, nationality, color, id } = job.data;
 
 	try {
-		const { statusCode, data, message } = await Servicio({ id });
+		const { statusCode, data, message } = await Services.View({
+			name,
+			age,
+			address,
+			nationality,
+			color,
+			id
+		});
 
 		done(null, { statusCode, data, message });
 	} catch(error) {
 		console.log({
-			step: 'adapters Adaptador',
+			step: 'adapters queueView',
 			error: error.toString()
 		});
 
