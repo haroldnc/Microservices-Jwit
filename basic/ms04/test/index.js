@@ -53,4 +53,15 @@ async function FindOne() {
    }
 }
 
+async function View() {
+   try {
+      const job = await queueView.add({});
+      const result = await job.finished();
+
+      console.log(result);
+   } catch (error) {
+      console.log(error);
+   }
+}
+
 main();
