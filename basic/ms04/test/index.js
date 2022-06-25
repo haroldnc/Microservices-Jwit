@@ -31,6 +31,17 @@ async function Delete() {
    }
 }
 
+async function Update() {
+   try {
+      const job = await queueUpdate.add({});
+      const result = await job.finished();
+
+      console.log(result);
+   } catch (error) {
+      console.log(error);
+   }
+}
+
 async function FindOne() {
    try {
       const job = await queueFindOne.add({});
