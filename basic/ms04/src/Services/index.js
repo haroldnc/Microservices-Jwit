@@ -1,24 +1,13 @@
-const { FindUser, ExistUser } = require('../Controllers');
+const Controllers = require('../Controllers');
 
-async function Servicio ({ id }) {
+async function Create({ name, age, address, nationality, color }) {
 	try {
-		const existUser = await ExistUser({ id });
+		const { statusCode, data, message } = await Controllers.Create({ name, age, address, nationality, color });
 
-		if (existUser.statusCode !== 200) throw(existUser.message);
-		if (!existUser.data) throw("No existe el usuario");
-
-		const findUser = await FindUser({ id });
-
-		if (findUser.statusCode !== 200) throw(findUser.message);
-
-		if (findUser.data.info.edad > 18) {
-			console.log('Eres mayor de edad');
-		}
-
-		return { statusCode: 200, data: findUser.data };
+		return { statusCode, data, message };
 	} catch(error) {
 		console.log({
-			step: 'services Servicio',
+			step: 'services Create',
 			error: error.toString()
 		});
 
@@ -26,4 +15,4 @@ async function Servicio ({ id }) {
 	}
 }
 
-module.exports = { Servicio };
+module.exports = { Create };
