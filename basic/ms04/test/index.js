@@ -1,6 +1,3 @@
-const bull = require('bull');
-
-const { redis } = require('../src/settings');
 const {
    queueCreate,
    queueDelete,
@@ -11,7 +8,13 @@ const {
 
 async function Create() {
    try {
-      const job = await queueCreate.add({});
+      const job = await queueCreate.add({
+         name,
+         age,
+         address,
+         nationality,
+         color
+      });
       const result = await job.finished();
 
       console.log(result);
@@ -22,7 +25,7 @@ async function Create() {
 
 async function Delete() {
    try {
-      const job = await queueDelete.add({});
+      const job = await queueDelete.add({ id });
       const result = await job.finished();
 
       console.log(result);
@@ -33,7 +36,14 @@ async function Delete() {
 
 async function Update() {
    try {
-      const job = await queueUpdate.add({});
+      const job = await queueUpdate.add({
+         name,
+         age,
+         address,
+         nationality,
+         color,
+         id
+      });
       const result = await job.finished();
 
       console.log(result);
@@ -44,7 +54,14 @@ async function Update() {
 
 async function FindOne() {
    try {
-      const job = await queueFindOne.add({});
+      const job = await queueFindOne.add({
+         name,
+         age,
+         address,
+         nationality,
+         color,
+         id
+      });
       const result = await job.finished();
 
       console.log(result);
@@ -55,13 +72,24 @@ async function FindOne() {
 
 async function View() {
    try {
-      const job = await queueView.add({});
+      const job = await queueView.add({
+         name,
+         age,
+         address,
+         nationality,
+         color,
+         id
+      });
       const result = await job.finished();
 
       console.log(result);
    } catch (error) {
       console.log(error);
    }
+}
+
+async function main() {
+   View();
 }
 
 main();
