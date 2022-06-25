@@ -1,16 +1,23 @@
 const bull = require('bull');
 
 const { redis } = require('../src/settings');
+const {
+   queueCreate,
+   queueDelete,
+   queueUpdate,
+   queueFindOne,
+   queueView
+} = require('../src/Adapters/index');
 
-async function main() {
-   const job = bull('curso', {redis: {host: redis.host, port: redis.port }})
-      .add({id: 1});
+async function Create() {
+   try {
+      const job = await queueCreate.add({});
+      const result = await job.finished();
 
-   const result = await (await job).finished();
-
-   console.log(result);
-
-   if (result.statusCode === 200) console.log('Solicitud correcta');
+      console.log(result);
+   } catch (error) {
+      console.log(error);
+   }
 }
 
 main();
