@@ -82,6 +82,14 @@ async function View({}) {
 }
 
 async function main() {
+   Create({
+      name: 'Jack',
+      age: 27,
+      address: 'Calle libertad 53',
+      nationality: 'Peruano',
+      color: 'Azul'
+   });
+
    View({});
 }
 
