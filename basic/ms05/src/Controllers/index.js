@@ -37,7 +37,7 @@ async function Delete({ where = {} }) {
 		return { statusCode: 200, data: "OK" }
 	} catch(error) {
 		console.log({
-			step: 'controller Create',
+			step: 'controller Delete',
 			error: error.toString()
 		});
 
@@ -60,7 +60,7 @@ async function Update({ name, age, address, nationality, color, id }) {
 		return { statusCode: 200, data: instance[1][0].toJSON() }
 	} catch(error) {
 		console.log({
-			step: 'controller Create',
+			step: 'controller Update',
 			error: error.toString()
 		});
 
@@ -75,7 +75,7 @@ async function FindOne({ where = {}}) {
 		return { statusCode: 200, data: instance.toJSON() };
 	} catch(error) {
 		console.log({
-			step: 'controller Create',
+			step: 'controller FindOne',
 			error: error.toString()
 		});
 
@@ -90,7 +90,7 @@ async function View({ where = {} }) {
 		return { statusCode: 200, data: instances };
 	} catch(error) {
 		console.log({
-			step: 'controller Create',
+			step: 'controller View',
 			error: error.toString()
 		});
 

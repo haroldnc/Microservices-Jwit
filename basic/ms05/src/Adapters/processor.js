@@ -123,6 +123,8 @@ async function View(job, done) {
 
 async function run() {
 	try {
+      console.log("Vamos a iniciar worker");
+
 		queueCreate.process(Create);
 		queueDelete.process(Delete);
 		queueUpdate.process(Update);

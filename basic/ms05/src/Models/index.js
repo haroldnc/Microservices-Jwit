@@ -21,7 +21,11 @@ const Model = sequelize.define('curso', {
 
 const SyncDB = async () => {
 	try {
-		Model.sync();
+      console.log("Vamos a inicializar base datos");
+
+		await Model.sync();
+
+      console.log("Base de datos inicializada");
 
 		return { statusCode: 200, data: "OK" };
 	} catch(error) {
