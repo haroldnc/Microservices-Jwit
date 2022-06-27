@@ -5,7 +5,7 @@
   "main": "dev.js",
   "scripts": {
     "start": "node dev.js",
-    "test": "node test/index.js"
+    "test": "node api/index.js"
   },
   "keywords": [],
   "author": "",

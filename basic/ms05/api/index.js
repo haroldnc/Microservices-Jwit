@@ -6,7 +6,7 @@ const {
    queueView
 } = require('../src/Adapters/index');
 
-async function Create() {
+async function Create({ name, age, address, nationality, color }) {
    try {
       const job = await queueCreate.add({
          name,
@@ -23,7 +23,7 @@ async function Create() {
    }
 }
 
-async function Delete() {
+async function Delete({ id }) {
    try {
       const job = await queueDelete.add({ id });
       const result = await job.finished();
@@ -34,7 +34,7 @@ async function Delete() {
    }
 }
 
-async function Update() {
+async function Update({ name, age, address, nationality, color, id }) {
    try {
       const job = await queueUpdate.add({
          name,
@@ -52,7 +52,7 @@ async function Update() {
    }
 }
 
-async function FindOne() {
+async function FindOne({ name, age, address, nationality, color, id }) {
    try {
       const job = await queueFindOne.add({
          name,
@@ -70,7 +70,7 @@ async function FindOne() {
    }
 }
 
-async function View() {
+async function View({ name, age, address, nationality, color, id }) {
    try {
       const job = await queueView.add({
          name,
@@ -89,7 +89,7 @@ async function View() {
 }
 
 async function main() {
-   View();
+   View({});
 }
 
 main();
