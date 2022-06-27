@@ -17,8 +17,7 @@ async function Create(job, done) {
 			age,
 			address,
 			nationality,
-			color,
-			id
+			color
 		});
 
 		done(null, { statusCode, data, message });
