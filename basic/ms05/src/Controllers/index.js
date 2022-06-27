@@ -15,7 +15,8 @@ async function Create({ name, age, address, nationality, color }) {
 				'address',
 				'nationality',
 				'color'
-			]
+			],
+         logging: false
 		});
 
 		return { statusCode: 200, data: instance.toJSON() }
@@ -54,7 +55,8 @@ async function Update({ name, age, address, nationality, color, id }) {
 			nationality,
 			color
 		}, {
-			where: { id }
+			where: { id },
+         logging: false
 		});
 
 		return { statusCode: 200, data: instance[1][0].toJSON() }

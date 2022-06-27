@@ -82,7 +82,7 @@ async function View({}) {
 }
 
 async function main() {
-   Create({
+   await Create({
       name: 'Jack',
       age: 27,
       address: 'Calle libertad 53',
@@ -90,7 +90,7 @@ async function main() {
       color: 'Azul'
    });
 
-   View({});
+   await View({});
 }
 
 main();
