@@ -95,7 +95,7 @@ async function main() {
       nationality: 'Peruana',
       color: 'Rojo'
    });*/
-   await Delete({ id: 2 })
+   await Delete({ id: 3 })
 
    await View({});
 }

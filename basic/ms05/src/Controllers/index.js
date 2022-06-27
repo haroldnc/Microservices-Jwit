@@ -27,7 +27,7 @@ async function Create({ name, age, address, nationality, color }) {
 			error: error.toString()
 		});
 
-		return { statusCode: 400, message: error.toString() };
+		return { statusCode: 500, message: error.toString() };
 	}
 }
 
@@ -42,7 +42,7 @@ async function Delete({ where = {} }) {
 			error: error.toString()
 		});
 
-		return { statusCode: 400, message: error.toString() };
+		return { statusCode: 500, message: error.toString() };
 	}
 }
 
@@ -66,13 +66,15 @@ async function Update({ name, age, address, nationality, color, id }) {
 			error: error.toString()
 		});
 
-		return { statusCode: 400, message: error.toString() };
+		return { statusCode: 500, message: error.toString() };
 	}
 }
 
 async function FindOne({ where = {} }) {
 	try {
 		const instance = await Model.findOne({ where, logging: false});
+      
+      if(!instance) return { statusCode: 400, message: error.toString() };
 
 		return { statusCode: 200, data: instance.toJSON() };
 	} catch(error) {
@@ -81,7 +83,7 @@ async function FindOne({ where = {} }) {
 			error: error.toString()
 		});
 
-		return { statusCode: 400, message: error.toString() };
+		return { statusCode: 500, message: error.toString() };
 	}
 }
 
@@ -96,7 +98,7 @@ async function View({ where = {} }) {
 			error: error.toString()
 		});
 
-		return { statusCode: 200, message: error.toString() };
+		return { statusCode: 500, message: error.toString() };
 	}
 }
 
