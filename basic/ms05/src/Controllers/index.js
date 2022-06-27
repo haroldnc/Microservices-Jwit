@@ -56,7 +56,8 @@ async function Update({ name, age, address, nationality, color, id }) {
 			color
 		}, {
 			where: { id },
-         logging: false
+         logging: false,
+         returning: true   // Solo funciona en Postgres
 		});
 
 		return { statusCode: 200, data: instance[1][0].toJSON() }

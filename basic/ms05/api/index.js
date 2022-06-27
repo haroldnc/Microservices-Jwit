@@ -55,16 +55,9 @@ async function Update({ name, age, address, nationality, color, id }) {
    }
 }
 
-async function FindOne({ name, age, address, nationality, color, id }) {
+async function FindOne({ id }) {
    try {
-      const job = await queueFindOne.add({
-         name,
-         age,
-         address,
-         nationality,
-         color,
-         id
-      });
+      const job = await queueFindOne.add({ id });
 
       const { statusCode, data, message } = await job.finished();
 
@@ -95,7 +88,12 @@ async function main() {
       nationality: 'Peruana',
       color: 'Rojo'
    });*/
-   await Delete({ id: 3 })
+   
+   //await Delete({ id: 3 });
+   
+   //await Update({ age: 19, id: 1 });
+   
+   await FindOne({ id: 4 });
 
    await View({});
 }

@@ -73,17 +73,10 @@ async function Update(job, done) {
 }
 
 async function FindOne(job, done) {
-	const { name, age, address, nationality, color, id } = job.data;
+	const { id } = job.data;
 
 	try {
-		const { statusCode, data, message } = await Services.FindOne({
-			name,
-			age,
-			address,
-			nationality,
-			color,
-			id
-		});
+		const { statusCode, data, message } = await Services.FindOne({ id });
 
 		done(null, { statusCode, data, message });
 	} catch(error) {
@@ -97,17 +90,8 @@ async function FindOne(job, done) {
 }
 
 async function View(job, done) {
-	const { name, age, address, nationality, color, id } = job.data;
-
 	try {
-		const { statusCode, data, message } = await Services.View({
-			name,
-			age,
-			address,
-			nationality,
-			color,
-			id
-		});
+		const { statusCode, data, message } = await Services.View({});
 
 		done(null, { statusCode, data, message });
 	} catch(error) {

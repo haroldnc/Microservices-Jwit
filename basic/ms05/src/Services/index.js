@@ -66,18 +66,9 @@ async function Update({ name, age, address, nationality, color, id }) {
 	}
 }
 
-async function FindOne({ name, age, address, nationality, color, id }) {
+async function FindOne({ id }) {
 	try {
-		const { statusCode, data, message } = await Controllers.FindOne({
-			where: {
-				name,
-				age,
-				address,
-				nationality,
-				color,
-				id
-			}
-		});
+		const { statusCode, data, message } = await Controllers.FindOne({ where: {	id	} });
 
 		return { statusCode, data, message };
 	} catch(error) {
