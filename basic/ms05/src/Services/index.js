@@ -70,18 +70,9 @@ async function FindOne({ name, age, address, nationality, color, id }) {
 	}
 }
 
-async function View({ name, age, address, nationality, color, id }) {
+async function View({}) {
 	try {
-		const { statusCode, data, message } = await Controllers.View({
-			where: {
-				name,
-				age,
-				address,
-				nationality,
-				color,
-				id
-			}
-		});
+		const { statusCode, data, message } = await Controllers.View({});
 
 		return { statusCode, data, message };
 	} catch(error) {

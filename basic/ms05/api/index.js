@@ -70,16 +70,9 @@ async function FindOne({ name, age, address, nationality, color, id }) {
    }
 }
 
-async function View({ name, age, address, nationality, color, id }) {
+async function View({}) {
    try {
-      const job = await queueView.add({
-         name,
-         age,
-         address,
-         nationality,
-         color,
-         id
-      });
+      const job = await queueView.add({});
       const result = await job.finished();
 
       console.log(result);

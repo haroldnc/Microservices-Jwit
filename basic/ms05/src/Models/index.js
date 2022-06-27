@@ -23,7 +23,7 @@ const SyncDB = async () => {
 	try {
       console.log("Vamos a inicializar base datos");
 
-		await Model.sync();
+		await Model.sync({ logging: false});
 
       console.log("Base de datos inicializada");
 

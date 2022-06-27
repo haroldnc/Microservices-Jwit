@@ -32,7 +32,7 @@ async function Create({ name, age, address, nationality, color }) {
 
 async function Delete({ where = {} }) {
 	try {
-		await Model.destroy({ where });
+		await Model.destroy({ where, logging: false });
 
 		return { statusCode: 200, data: "OK" }
 	} catch(error) {
@@ -47,7 +47,7 @@ async function Delete({ where = {} }) {
 
 async function Update({ name, age, address, nationality, color, id }) {
 	try {
-		const instance = await Model.create({
+		const instance = await Model.update({
 			name,
 			age,
 			address,
@@ -68,9 +68,9 @@ async function Update({ name, age, address, nationality, color, id }) {
 	}
 }
 
-async function FindOne({ where = {}}) {
+async function FindOne({ where = {} }) {
 	try {
-		const instance = await Model.findOne({ where });
+		const instance = await Model.findOne({ where, logging: false});
 
 		return { statusCode: 200, data: instance.toJSON() };
 	} catch(error) {
@@ -85,7 +85,7 @@ async function FindOne({ where = {}}) {
 
 async function View({ where = {} }) {
 	try {
-		const instances = await Model.findAll({ where });
+		const instances = await Model.findAll({ where, logging: false });
 
 		return { statusCode: 200, data: instances };
 	} catch(error) {
