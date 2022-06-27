@@ -15,9 +15,10 @@ async function Create({ name, age, address, nationality, color }) {
          nationality,
          color
       });
-      const result = await job.finished();
+      const { statusCode, data, message } = await job.finished();
 
-      console.log(result);
+      if(statusCode === 200) console.log("Hola, bienvenido", data.name);
+      else console.error(message);
    } catch (error) {
       console.log(error);
    }
@@ -26,9 +27,10 @@ async function Create({ name, age, address, nationality, color }) {
 async function Delete({ id }) {
    try {
       const job = await queueDelete.add({ id });
-      const result = await job.finished();
+      const { statusCode, data, message } = await job.finished();
 
-      console.log(result);
+      if(statusCode === 200) console.log("El usuario eliminado es", data.name);
+      else console.error(message);
    } catch (error) {
       console.log(error);
    }
@@ -44,9 +46,10 @@ async function Update({ name, age, address, nationality, color, id }) {
          color,
          id
       });
-      const result = await job.finished();
 
-      console.log(result);
+      const { statusCode, data, message } = await job.finished();
+
+      console.log({ statusCode, data, message });
    } catch (error) {
       console.log(error);
    }
@@ -62,9 +65,11 @@ async function FindOne({ name, age, address, nationality, color, id }) {
          color,
          id
       });
-      const result = await job.finished();
 
-      console.log(result);
+      const { statusCode, data, message } = await job.finished();
+
+      if(statusCode === 200) console.log("El usuario buscado es", data);
+      else console.error(message);
    } catch (error) {
       console.log(error);
    }
@@ -73,22 +78,24 @@ async function FindOne({ name, age, address, nationality, color, id }) {
 async function View({}) {
    try {
       const job = await queueView.add({});
-      const result = await job.finished();
+      const { statusCode, data, message } = await job.finished();
 
-      console.log(result);
+      if(statusCode === 200) for (let x of data) console.log(x);
+      else console.error(message);
    } catch (error) {
       console.log(error);
    }
 }
 
 async function main() {
-   await Create({
-      name: 'Jack',
-      age: 27,
-      address: 'Calle libertad 53',
-      nationality: 'Peruano',
-      color: 'Azul'
-   });
+   /*await Create({
+      name: 'Marilyn',
+      age: 25,
+      address: 'Calle Esperanza 5',
+      nationality: 'Peruana',
+      color: 'Rojo'
+   });*/
+   await Delete({ id: 2 })
 
    await View({});
 }
