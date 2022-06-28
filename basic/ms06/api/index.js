@@ -1,10 +1,13 @@
-const {
-   queueCreate,
-   queueDelete,
-   queueUpdate,
-   queueFindOne,
-   queueView
-} = require('../src/Adapters/index');
+const bull = require('bull');
+
+const redis = {host: '192.168.2.104', port: 6379};
+const opts = {redis: {host: redis.host, port: redis.port }}
+
+const queueCreate = bull('curso:create', opts);
+const queueDelete = bull('curso:delete', opts);
+const queueUpdate = bull('curso:update', opts);
+const queueFindOne = bull('curso:findOne', opts);
+const queueView = bull('curso:view', opts);
 
 async function Create({ name, age, address, nationality, color }) {
    try {
@@ -75,7 +78,7 @@ async function View({}) {
    }
 }
 
-async function main() {
+//async function main() {
    /*await Create({
       name: 'Marilyn',
       age: 25,
@@ -91,7 +94,7 @@ async function main() {
    // await FindOne({ id: 4 });
 
    // await View({});
-}
+//}
 
 module.exports = {
    Create,
