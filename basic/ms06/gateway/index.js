@@ -12,8 +12,8 @@ server.listen(3000, () => {
    io.on('connection', (socket) => {
       console.log('New connection', socket.id);
 
-      socket.on('microservice:view', ({}) => {
-         
+      socket.on('req:microservice:view', ({}) => {
+         console.log('He sido llamado por el cliente');
       });
    });
 });
