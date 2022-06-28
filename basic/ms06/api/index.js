@@ -17,8 +17,7 @@ async function Create({ name, age, address, nationality, color }) {
       });
       const { statusCode, data, message } = await job.finished();
 
-      if(statusCode === 200) console.log("Hola, bienvenido", data.name);
-      else console.error(message);
+      return { statusCode, data, message };
    } catch (error) {
       console.log(error);
    }
@@ -29,8 +28,7 @@ async function Delete({ id }) {
       const job = await queueDelete.add({ id });
       const { statusCode, data, message } = await job.finished();
 
-      if(statusCode === 200) console.log("El usuario eliminado es", data.name);
-      else console.error(message);
+      return { statusCode, data, message };
    } catch (error) {
       console.log(error);
    }
@@ -49,7 +47,7 @@ async function Update({ name, age, address, nationality, color, id }) {
 
       const { statusCode, data, message } = await job.finished();
 
-      console.log({ statusCode, data, message });
+      return { statusCode, data, message };
    } catch (error) {
       console.log(error);
    }
@@ -58,11 +56,9 @@ async function Update({ name, age, address, nationality, color, id }) {
 async function FindOne({ id }) {
    try {
       const job = await queueFindOne.add({ id });
-
       const { statusCode, data, message } = await job.finished();
 
-      if(statusCode === 200) console.log("El usuario buscado es", data);
-      else console.error(message);
+      return { statusCode, data, message };
    } catch (error) {
       console.log(error);
    }
@@ -73,8 +69,7 @@ async function View({}) {
       const job = await queueView.add({});
       const { statusCode, data, message } = await job.finished();
 
-      if(statusCode === 200) for (let x of data) console.log(x);
-      else console.error(message);
+      return { statusCode, data, message };
    } catch (error) {
       console.log(error);
    }
@@ -93,9 +88,15 @@ async function main() {
    
    //await Update({ age: 19, id: 1 });
    
-   await FindOne({ id: 4 });
+   // await FindOne({ id: 4 });
 
-   await View({});
+   // await View({});
 }
 
-main();
+module.exports = {
+   Create,
+   Delete,
+   Update,
+   FindOne,
+   View
+}
