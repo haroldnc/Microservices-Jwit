@@ -78,24 +78,6 @@ async function View({}) {
    }
 }
 
-//async function main() {
-   /*await Create({
-      name: 'Marilyn',
-      age: 25,
-      address: 'Calle Esperanza 5',
-      nationality: 'Peruana',
-      color: 'Rojo'
-   });*/
-   
-   //await Delete({ id: 3 });
-   
-   //await Update({ age: 19, id: 1 });
-   
-   // await FindOne({ id: 4 });
-
-   // await View({});
-//}
-
 module.exports = {
    Create,
    Delete,

@@ -91,6 +91,8 @@ async function FindOne(job, done) {
 
 async function View(job, done) {
 	try {
+		console.log(job.id)
+
 		const { statusCode, data, message } = await Services.View({});
 
 		done(null, { statusCode, data, message });

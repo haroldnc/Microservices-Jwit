@@ -26,7 +26,15 @@ async function main() {
          console.log('res:microservice:findOne', {statusCode, data, message});
       });
 
-      setInterval(() => socket.emit('req:microservice:view', ({})), 5000);
+      // setInterval(() => socket.emit('req:microservice:view', ({})), 200);
+
+      setTimeout(() => {
+         //socket.emit('req:microservice:create', ({ age: 27, color: 'Azul', name: 'Jack' }));
+         //socket.emit('req:microservice:delete', ({ id:2 }));
+         //socket.emit('req:microservice:update', ({ id:1, age: 19 }));
+         //socket.emit('req:microservice:findOne', ({ id:4 }));
+         socket.emit('req:microservice:view', ({}));
+      }, 300);
    } catch (error) {
       console.log(error);
    }
